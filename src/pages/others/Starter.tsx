@@ -1,7 +1,7 @@
 import { Button, Stack, Typography } from '@mui/material';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
-import image from 'assets/images/illustrations/17.webp';
+import image from 'assets/images/illustrations/2.webp';
 import Image from 'components/base/Image';
 
 const Starter = () => {
