@@ -1,4 +1,5 @@
 import { Button, Paper, Stack, Typography } from '@mui/material';
+import { storeLink } from 'lib/constants';
 
 const ProPlanCTA = () => {
   return (
@@ -23,7 +24,7 @@ const ProPlanCTA = () => {
         }}
       >
         <Typography variant="h3" sx={{ typography: { xs: 'h4', sm: 'h3' }, flexShrink: { sm: 0 } }}>
-          Try our pro plan
+          Try our pro features
         </Typography>
 
         <Typography
@@ -32,12 +33,13 @@ const ProPlanCTA = () => {
             fontWeight: { xs: 400, sm: 400 },
           }}
         >
-          First month free, $12.50/month after.
+          Starts from only $59.
         </Typography>
       </Stack>
 
       <Button
-        href="#!"
+        href={storeLink}
+        target="_blank"
         variant="contained"
         color="neutral"
         size="large"

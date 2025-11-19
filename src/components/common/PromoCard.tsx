@@ -30,7 +30,7 @@ const PromoCard = ({ sx, ...rest }: PaperProps) => {
         <Typography variant="body2" sx={{ color: 'text.secondary' }}>
           {`From only `}
           <Box component="strong" sx={{ color: 'text.primary' }}>
-            $69
+            $59
           </Box>
         </Typography>
 
