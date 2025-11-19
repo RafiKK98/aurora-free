@@ -139,6 +139,13 @@ const Logo = ({ sx, viewBox = '0 0 26 40', showName = true, ...rest }: LogoProps
             margin: 1,
             marginLeft: 0.625,
             letterSpacing: '-.8px',
+            background: ({ vars }) =>
+              `linear-gradient(100.06deg, #20DE99 6.97%, #7DB1F5 27.63%, #5A9EF6 49.36%, ${vars.palette.text.secondary} 50.11%, ${vars.palette.text.secondary} 87.87%);`,
+            backgroundSize: '240% 100%',
+            backgroundPosition: 'right',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            transition: 'background-position .3s cubic-bezier(0.8, 0.63, .5, 1)',
           }}
         >
           aurora

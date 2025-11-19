@@ -1,47 +1,56 @@
-import { useState } from 'react';
-import { Button, ListItemIcon, ListItemText, MenuItem, Typography } from '@mui/material';
+import { SyntheticEvent, useState } from 'react';
+import {
+  Button,
+  ListItemIcon,
+  ListItemText,
+  MenuItem,
+  SnackbarCloseReason,
+  Typography,
+} from '@mui/material';
 import Menu from '@mui/material/Menu';
 import { languages } from 'data/languages';
 import IconifyIcon from 'components/base/IconifyIcon';
+import ProSnackbar from './ProSnackbar';
 
 const LanguageMenu = () => {
+  const [open, setOpen] = useState(false);
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
-  const [selected, setSelected] = useState(languages[0]); // static selection only
 
-  const open = Boolean(anchorEl);
+  const menuOpen = Boolean(anchorEl);
 
-  const handleClick = (event: React.MouseEvent<HTMLElement>) => {
+  const handleOpen = () => setOpen(true);
+  const handleClose = (_event: SyntheticEvent, reason?: SnackbarCloseReason) => {
+    if (reason === 'clickaway') return;
+    setOpen(false);
+  };
+
+  const handleMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
   };
 
-  const handleClose = () => {
+  const handleMenuClose = () => {
     setAnchorEl(null);
-  };
-
-  const handleItemClick = (language: (typeof languages)[number]) => {
-    setSelected(language); // purely UI selection
-    handleClose();
   };
 
   return (
     <>
-      <Button color="neutral" variant="text" shape="circle" onClick={handleClick}>
-        <IconifyIcon icon={selected.icon} sx={{ fontSize: 24 }} />
+      <Button color="neutral" variant="text" shape="circle" onClick={handleMenuOpen}>
+        <IconifyIcon icon={languages[0].icon} sx={{ fontSize: 24 }} />
       </Button>
 
       <Menu
         anchorEl={anchorEl}
         id="language-menu"
-        open={open}
-        onClose={handleClose}
+        open={menuOpen}
+        onClose={handleMenuClose}
         transformOrigin={{ horizontal: 'right', vertical: 'top' }}
         anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
       >
         {languages.map((language) => (
           <MenuItem
             key={language.shortLabel}
-            onClick={() => handleItemClick(language)}
-            selected={selected.locale === language.locale}
+            onClick={handleOpen}
+            selected={language.locale === 'en-US'}
             sx={{ minWidth: 200 }}
           >
             <ListItemIcon>
@@ -67,6 +76,7 @@ const LanguageMenu = () => {
           </MenuItem>
         ))}
       </Menu>
+      <ProSnackbar open={open} onClose={handleClose} />
     </>
   );
 };

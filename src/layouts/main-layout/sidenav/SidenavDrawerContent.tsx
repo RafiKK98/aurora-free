@@ -66,6 +66,10 @@ const SidenavDrawerContent = ({ variant = 'permanent' }: SidenavDrawerContentPro
             sx={[
               {
                 py: 2,
+                height: 1,
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'space-between',
               },
               !expanded && {
                 px: 2,
@@ -75,55 +79,57 @@ const SidenavDrawerContent = ({ variant = 'permanent' }: SidenavDrawerContentPro
               },
             ]}
           >
-            {sitemap.map((menu, index) => (
-              <Box key={menu.id}>
-                {menu.subheader === 'Docs' && !sidenavCollapsed && (
-                  <>
-                    <Divider sx={{ mb: 4 }} />
-                  </>
-                )}
-                <List
-                  dense
-                  key={menu.id}
-                  sx={{
-                    mb: index !== sitemap.length - 1 ? 3 : 0,
-                    pb: 0,
-                    display: 'flex',
-                    flexDirection: 'column',
-                    gap: '2px',
-                  }}
-                  subheader={
-                    menu.subheader && (
-                      <ListSubheader
-                        component="div"
-                        disableGutters
-                        sx={{
-                          textAlign: expanded ? 'left' : 'center',
-                          color: 'text.disabled',
-                          typography: 'overline',
-                          fontWeight: 700,
-                          py: 1,
-                          paddingLeft: expanded ? 2 : 0,
-                          mb: 0.25,
-                          position: 'static',
-                          background: 'transparent',
-                        }}
-                      >
-                        {menu.subheader}
-                      </ListSubheader>
-                    )
-                  }
-                >
-                  {menu.items.map((item) => (
-                    <NavItem key={item.pathName} item={item} level={0} />
-                  ))}
-                </List>
-              </Box>
-            ))}
+            <div>
+              {sitemap.map((menu) => (
+                <Box key={menu.id}>
+                  {menu.subheader === 'Docs' && !sidenavCollapsed && (
+                    <>
+                      <Divider sx={{ mb: 4 }} />
+                    </>
+                  )}
+                  <List
+                    dense
+                    key={menu.id}
+                    sx={{
+                      mb: 3,
+                      pb: 0,
+                      display: 'flex',
+                      flexDirection: 'column',
+                      gap: '2px',
+                    }}
+                    subheader={
+                      menu.subheader && (
+                        <ListSubheader
+                          component="div"
+                          disableGutters
+                          sx={{
+                            textAlign: expanded ? 'left' : 'center',
+                            color: 'text.disabled',
+                            typography: 'overline',
+                            fontWeight: 700,
+                            py: 1,
+                            paddingLeft: expanded ? 2 : 0,
+                            mb: 0.25,
+                            position: 'static',
+                            background: 'transparent',
+                          }}
+                        >
+                          {menu.subheader}
+                        </ListSubheader>
+                      )
+                    }
+                  >
+                    {menu.items.map((item) => (
+                      <NavItem key={item.pathName} item={item} level={0} />
+                    ))}
+                  </List>
+                </Box>
+              ))}
+            </div>
+            {!sidenavCollapsed && <PromoCard />}
           </Box>{' '}
         </SidenavSimpleBar>
       </Box>
-      <PromoCard />
     </>
   );
 };

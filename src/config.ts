@@ -1,6 +1,8 @@
 import { mainDrawerWidth } from 'lib/constants';
 
-export type FontFamily = 'Plus Jakarta Sans' | 'Roboto' | 'Inter' | 'Poppins';
+export const fontFamilies = ['Plus Jakarta Sans', 'Roboto', 'Inter', 'Poppins'] as const;
+
+export type FontFamily = (typeof fontFamilies)[number];
 
 export interface Config {
   assetsDir: string;

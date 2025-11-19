@@ -35,7 +35,7 @@ const SettingsPanel = () => {
         sx={({ zIndex }) => ({
           zIndex: zIndex.tooltip + 1,
           [`& .${paperClasses.root}`]: {
-            width: 'auto',
+            width: 313,
           },
         })}
       >
@@ -101,21 +101,25 @@ const SettingsPanel = () => {
             disableHorizontal
             autoHide={false}
           >
-            <Box sx={{ p: 3 }}>
-              <Stack
-                direction="column"
-                sx={{
-                  gap: 5,
-                }}
-              >
-                <Section title="Font Family">
-                  <FontFamilyTab />
-                </Section>
-              </Stack>
-            </Box>
+            <Stack direction="column" justifyContent="space-between" sx={{ height: 1 }}>
+              <Box sx={{ p: 3 }}>
+                <Stack
+                  direction="column"
+                  sx={{
+                    gap: 5,
+                  }}
+                >
+                  <Section title="Font Family">
+                    <FontFamilyTab />
+                  </Section>
+                </Stack>
+              </Box>
+              <Box sx={{ p: 3 }}>
+                <PromoCard sx={{ width: '100% !important' }} />
+              </Box>
+            </Stack>
           </SimpleBar>
         </Box>
-        <PromoCard />
       </Drawer>
     </div>
   );

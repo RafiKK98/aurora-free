@@ -11,7 +11,7 @@ const PromoCard = ({ sx, ...rest }: PaperProps) => {
   return (
     <Paper
       background={1}
-      sx={{ p: 2, my: 2, mx: 4, borderRadius: 4, outline: 0, position: 'relative', ...sx }}
+      sx={{ p: 2, borderRadius: 4, outline: 0, position: 'relative', ...sx }}
       {...rest}
     >
       <Stack direction="column" alignItems="center" gap={0.5}>

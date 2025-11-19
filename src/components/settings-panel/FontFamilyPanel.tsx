@@ -1,8 +1,13 @@
-import { ChangeEvent } from 'react';
-import { FontFamily } from 'config';
+import List from '@mui/material/List';
+import ListItemButton from '@mui/material/ListItemButton';
+import ListItemIcon from '@mui/material/ListItemIcon';
+import ListItemText from '@mui/material/ListItemText';
+import Radio, { radioClasses } from '@mui/material/Radio';
+import Typography from '@mui/material/Typography';
+import { FontFamily, fontFamilies } from 'config';
+import { kebabCase } from 'lib/utils';
 import { useSettingsContext } from 'providers/SettingsProvider';
-import FontFamilyItem from './FontFamilyItem';
-import SettingsPanelRadioGroup from './SettingsPanelRadioGroup';
+import IconifyIcon from 'components/base/IconifyIcon';
 
 const FontFamilyTab = () => {
   const {
@@ -10,27 +15,74 @@ const FontFamilyTab = () => {
     setConfig,
   } = useSettingsContext();
 
-  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-    const value = (event.target as HTMLInputElement).value as FontFamily;
+  const handleChange = (newValue: FontFamily) => {
     setConfig({
-      fontFamily: value,
+      fontFamily: newValue,
     });
   };
 
   return (
-    <SettingsPanelRadioGroup
-      name="font-family"
-      value={fontFamily}
-      onChange={handleChange}
-      sx={{
-        gridTemplateColumns: 'repeat(1, 1fr)',
-      }}
-    >
-      <FontFamilyItem fontFamily="Plus Jakarta Sans" active={fontFamily === 'Plus Jakarta Sans'} />
-      <FontFamilyItem fontFamily="Poppins" active={fontFamily === 'Poppins'} />
-      <FontFamilyItem fontFamily="Roboto" active={fontFamily === 'Roboto'} />
-      <FontFamilyItem fontFamily="Inter" active={fontFamily === 'Inter'} />
-    </SettingsPanelRadioGroup>
+    <List dense disablePadding sx={{ display: 'flex', flexDirection: 'column', gap: 0.5, mb: 3 }}>
+      {fontFamilies.map((font) => (
+        <ListItemButton
+          key={kebabCase(font)}
+          selected={fontFamily === font}
+          onClick={() => handleChange(font)}
+          sx={{
+            py: fontFamily === font ? 0.5 : 1,
+            bgcolor: 'background.elevation1',
+            '&:hover': { bgcolor: 'primary.lighter' },
+            '&.Mui-selected': {
+              bgcolor: (theme) => theme.vars.palette.primary.lighter,
+              '&:hover': {
+                bgcolor: (theme) => theme.vars.palette.primary.lighter,
+              },
+            },
+            '&:last-child': {
+              borderBottom: 'none',
+            },
+          }}
+        >
+          <ListItemIcon sx={{ minWidth: 28 }}>
+            <Radio
+              checked={fontFamily === font}
+              onChange={() => handleChange(font)}
+              value={font}
+              checkedIcon={
+                <IconifyIcon
+                  fontSize={24}
+                  icon="material-symbols-light:check-circle"
+                  sx={{ color: 'primary.main', fontSize: '24px !important' }}
+                />
+              }
+              sx={{
+                p: 0,
+                ...(fontFamily === font && {
+                  [`&.${radioClasses.root}`]: {
+                    ml: -0.5,
+                  },
+                  '&:hover': {
+                    backgroundColor: 'transparent',
+                  },
+                }),
+              }}
+            />
+          </ListItemIcon>
+
+          <ListItemText
+            primary={
+              <Typography
+                variant="subtitle2"
+                color="text.secondary"
+                sx={{ lineHeight: 0, fontFamily: font }}
+              >
+                {font}
+              </Typography>
+            }
+          />
+        </ListItemButton>
+      ))}
+    </List>
   );
 };
 
