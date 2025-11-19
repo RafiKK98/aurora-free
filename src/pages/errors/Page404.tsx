@@ -1,6 +1,6 @@
 import { Box, Button, Stack, Typography } from '@mui/material';
-import image from 'assets/images/illustrations/1.webp';
 import Image from 'components/base/Image';
+import image from '/assets/images/illustrations/1.webp';
 
 const Page404 = () => {
   return (

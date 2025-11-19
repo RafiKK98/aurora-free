@@ -2,9 +2,9 @@ import { PropsWithChildren } from 'react';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import Stack from '@mui/material/Stack';
-import image from 'assets/images/illustrations/3.webp';
 import Image from 'components/base/Image';
 import Logo from 'components/common/Logo';
+import image from '/assets/images/illustrations/3.webp';
 
 const AuthLayout = ({ children }: PropsWithChildren) => {
   return (
