@@ -49,6 +49,8 @@ const UsersTable = ({ apiRef, filterButtonEl }: UsersTableProps) => {
         width: 64,
         sortable: false,
         filterable: false,
+        align: 'center',
+        headerAlign: 'center',
         renderCell: (params: GridRenderCellParams<User>) => (
           <Tooltip title={params.row.name}>
             <Avatar
@@ -84,6 +86,8 @@ const UsersTable = ({ apiRef, filterButtonEl }: UsersTableProps) => {
         field: 'status',
         headerName: 'Status',
         width: 100,
+        align: 'center',
+        headerAlign: 'center',
         renderCell: (params: GridRenderCellParams<User>) => (
           <Chip
             label={params.row.status}
