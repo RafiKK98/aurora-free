@@ -66,7 +66,6 @@ const SidenavDrawerContent = ({ variant = 'permanent' }: SidenavDrawerContentPro
             sx={[
               {
                 py: 2,
-                height: 1,
                 display: 'flex',
                 flexDirection: 'column',
                 justifyContent: 'space-between',
