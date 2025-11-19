@@ -114,6 +114,7 @@ const NavItem = ({ item, level }: NavItemProps) => {
           component={item.items ? 'div' : NavLink}
           to={item.path}
           onClick={toggleCollapseItem}
+          target={item.target ? item.target : undefined}
           onMouseEnter={sidenavCollapsed ? handleMouseEnter : undefined}
           onMouseLeave={sidenavCollapsed ? handleClose : undefined}
           aria-expanded={openPopperMenu}

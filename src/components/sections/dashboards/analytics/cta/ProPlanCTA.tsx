@@ -43,7 +43,7 @@ const ProPlanCTA = () => {
         size="large"
         sx={{ flexShrink: 0, alignSelf: 'center' }}
       >
-        See Plans
+        Upgrade to Pro
       </Button>
     </Paper>
   );

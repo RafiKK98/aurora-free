@@ -1,3 +1,4 @@
+import { HTMLAttributeAnchorTarget } from 'react';
 import { SxProps } from '@mui/material';
 import paths, { rootPaths } from './paths';
 
@@ -7,6 +8,7 @@ export interface SubMenuItem {
   key?: string;
   selectionPrefix?: string;
   path?: string;
+  target?: HTMLAttributeAnchorTarget;
   active?: boolean;
   icon?: string;
   iconSx?: SxProps;
@@ -18,6 +20,7 @@ export interface MenuItem {
   key?: string; // used for the locale
   subheader: string;
   icon: string;
+  target?: HTMLAttributeAnchorTarget;
   iconSx?: SxProps;
   items: SubMenuItem[];
 }
@@ -92,6 +95,14 @@ const sitemap: MenuItem[] = [
     subheader: 'Misc',
     icon: 'material-symbols:dashboard-customize-outline-rounded',
     items: [
+      {
+        name: 'Documentation',
+        icon: 'material-symbols:description-outline-rounded',
+        path: paths.documentation,
+        pathName: 'documentation',
+        active: true,
+        target: '_blank',
+      },
       {
         name: 'Multi level',
         pathName: 'multi-level',

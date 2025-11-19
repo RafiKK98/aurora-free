@@ -34,7 +34,7 @@ const ProSnackbar = ({
             sx={{
               width: 40,
               height: 40,
-              bgcolor: 'info.lighter',
+              bgcolor: 'info.darker',
               borderRadius: '50%',
             }}
           >

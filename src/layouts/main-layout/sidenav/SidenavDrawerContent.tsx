@@ -7,6 +7,7 @@ import { useSettingsContext } from 'providers/SettingsProvider';
 import sitemap from 'routes/sitemap';
 import IconifyIcon from 'components/base/IconifyIcon';
 import Logo from 'components/common/Logo';
+import PromoCard from 'components/common/PromoCard';
 import NavItem from './NavItem';
 import SidenavSimpleBar from './SidenavSimpleBar';
 
@@ -122,6 +123,7 @@ const SidenavDrawerContent = ({ variant = 'permanent' }: SidenavDrawerContentPro
           </Box>{' '}
         </SidenavSimpleBar>
       </Box>
+      <PromoCard />
     </>
   );
 };

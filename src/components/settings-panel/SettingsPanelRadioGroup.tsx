@@ -7,7 +7,7 @@ const SettingsPanelRadioGroup = ({ children, sx, ...rest }: RadioGroupProps) => 
         flexDirection: 'row',
         display: 'grid',
         gridTemplateColumns: 'repeat(2, 1fr)',
-        gap: 2,
+        gap: 1,
         [`& .${formControlLabelClasses.root}`]: {
           margin: 0,
         },

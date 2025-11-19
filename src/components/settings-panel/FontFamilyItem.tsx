@@ -20,17 +20,14 @@ const FontFamilyItem = ({ fontFamily, active }: FontFamilyItemProps) => {
       control={<Radio />}
       label={
         <Paper
-          background={isHovered || active ? 2 : undefined}
+          background={isHovered || active ? 1 : undefined}
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
           sx={{ p: 2, borderRadius: 2, width: '100% !important', position: 'relative' }}
         >
           <Stack direction="column" gap={2}>
-            <Typography variant="caption" sx={{ fontFamily, fontWeight: 500 }}>
+            <Typography variant="subtitle2" sx={{ fontFamily }}>
               {fontFamily}
-            </Typography>
-            <Typography sx={{ fontFamily: fontFamily }}>
-              Almost before we knew it, we had left the ground.
             </Typography>
           </Stack>
           {active && (
@@ -48,7 +45,7 @@ const FontFamilyItem = ({ fontFamily, active }: FontFamilyItemProps) => {
         </Paper>
       }
       sx={{
-        [`& .${formControlLabelClasses.label}`]: { mt: 0 },
+        [`& .${formControlLabelClasses.label}`]: { mt: '0 !important', width: 1 },
       }}
     />
   );

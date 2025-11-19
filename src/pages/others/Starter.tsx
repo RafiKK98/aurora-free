@@ -1,6 +1,7 @@
 import { Button, Stack, Typography } from '@mui/material';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
+import paths from 'routes/paths';
 import Image from 'components/base/Image';
 import image from '/assets/images/illustrations/2.webp';
 
@@ -54,7 +55,13 @@ const Starter = () => {
             >
               Edit me!
             </Typography>
-            <Button variant="contained" color="primary" sx={{ width: 1 }}>
+            <Button
+              href={paths.documentation}
+              target="_blank"
+              variant="contained"
+              color="primary"
+              sx={{ width: 1 }}
+            >
               Get Started
             </Button>
           </Box>
