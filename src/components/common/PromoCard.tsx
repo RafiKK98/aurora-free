@@ -51,14 +51,14 @@ const PromoCard = ({ showFeatures = true, sx, ...rest }: PromoCardProps) => {
     >
       <Stack direction="column" gap={2} alignItems="center">
         <Stack direction="column" alignItems="center" gap={0.5}>
-          <Typography variant="subtitle1" fontWeight={700} sx={{ color: 'success.dark' }}>
+          <Typography variant="subtitle1" fontWeight={700}>
             Get More Features
           </Typography>
-          <Stack gap={1} alignItems="center" sx={{ color: 'success.main' }}>
+          <Stack gap={1} alignItems="center">
             <Typography variant="caption" fontWeight={500}>
               Starting at just
             </Typography>
-            <Typography component="strong" variant="subtitle2">
+            <Typography component="strong" variant="subtitle2" fontWeight={700} color="success">
               $59
             </Typography>
           </Stack>
@@ -69,10 +69,13 @@ const PromoCard = ({ showFeatures = true, sx, ...rest }: PromoCardProps) => {
         </Box>
 
         {showFeatures && (
-          <Stack direction="column" gap={0.4} alignSelf="flex-start">
+          <Stack direction="column" gap={0.25} alignSelf="flex-start">
             {proFeatures.map((feature, index) => (
-              <Stack key={index} gap={0.4} alignItems="center" sx={{ color: 'success.light' }}>
-                <IconifyIcon icon="material-symbols:check" sx={{ fontSize: 16 }} />
+              <Stack key={index} gap={0.4} alignItems="center">
+                <IconifyIcon
+                  icon="material-symbols:check"
+                  sx={{ fontSize: 16, color: 'success.main' }}
+                />
                 <Typography variant="caption" fontWeight={600}>
                   {feature}
                 </Typography>
