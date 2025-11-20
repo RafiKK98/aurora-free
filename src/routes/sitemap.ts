@@ -18,7 +18,7 @@ export interface SubMenuItem {
 export interface MenuItem {
   id: string;
   key?: string; // used for the locale
-  subheader: string;
+  subheader?: string;
   icon: string;
   target?: HTMLAttributeAnchorTarget;
   iconSx?: SxProps;
@@ -28,7 +28,6 @@ export interface MenuItem {
 const sitemap: MenuItem[] = [
   {
     id: 'pages',
-    subheader: 'Pages',
     icon: 'material-symbols:view-quilt-outline',
     items: [
       {
@@ -81,13 +80,6 @@ const sitemap: MenuItem[] = [
         pathName: 'sign-up',
         active: true,
       },
-    ],
-  },
-  {
-    id: 'misc',
-    subheader: 'Misc',
-    icon: 'material-symbols:dashboard-customize-outline-rounded',
-    items: [
       {
         name: 'Documentation',
         icon: 'material-symbols:description-outline-rounded',

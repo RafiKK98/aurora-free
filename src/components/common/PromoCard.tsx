@@ -1,6 +1,5 @@
-import Box from '@mui/material/Box';
+import Box, { BoxProps } from '@mui/material/Box';
 import Button from '@mui/material/Button';
-import Paper, { PaperProps } from '@mui/material/Paper';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import { storeLink } from 'lib/constants';
@@ -11,13 +10,14 @@ import promo from '/assets/images/illustrations/5.webp';
 
 const proFeatures = ['Flexible customization', 'More pages', 'More apps', 'Quick support'];
 
-interface PromoCardProps extends PaperProps {
+interface PromoCardProps extends BoxProps {
   showFeatures?: boolean;
 }
 
 const PromoCard = ({ showFeatures = true, sx, ...rest }: PromoCardProps) => {
   return (
-    <Paper
+    <Box
+      className="promo-card"
       sx={(theme) => {
         const palette = (theme.vars.palette as any)['chGreen'];
         const bg = (theme.vars.palette as any).background;
@@ -85,7 +85,7 @@ const PromoCard = ({ showFeatures = true, sx, ...rest }: PromoCardProps) => {
           Explore now
         </Button>
       </Stack>
-    </Paper>
+    </Box>
   );
 };
 

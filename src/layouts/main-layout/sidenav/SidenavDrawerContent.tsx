@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import { Divider, IconButton, ListSubheader } from '@mui/material';
+import { Divider, IconButton } from '@mui/material';
 import Box from '@mui/material/Box';
 import List from '@mui/material/List';
 import Toolbar from '@mui/material/Toolbar';
@@ -96,27 +96,6 @@ const SidenavDrawerContent = ({ variant = 'permanent' }: SidenavDrawerContentPro
                       flexDirection: 'column',
                       gap: '2px',
                     }}
-                    subheader={
-                      menu.subheader && (
-                        <ListSubheader
-                          component="div"
-                          disableGutters
-                          sx={{
-                            textAlign: expanded ? 'left' : 'center',
-                            color: 'text.disabled',
-                            typography: 'overline',
-                            fontWeight: 700,
-                            py: 1,
-                            paddingLeft: expanded ? 2 : 0,
-                            mb: 0.25,
-                            position: 'static',
-                            background: 'transparent',
-                          }}
-                        >
-                          {menu.subheader}
-                        </ListSubheader>
-                      )
-                    }
                   >
                     {menu.items.map((item) => (
                       <NavItem key={item.pathName} item={item} level={0} />

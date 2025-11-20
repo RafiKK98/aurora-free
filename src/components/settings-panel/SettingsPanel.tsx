@@ -115,7 +115,7 @@ const SettingsPanel = () => {
                 </Stack>
               </Box>
               <Box sx={{ p: 3 }}>
-                <PromoCard showFeatures={false} sx={{ width: '100% !important' }} />
+                <PromoCard showFeatures={false} />
               </Box>
             </Stack>
           </SimpleBar>
