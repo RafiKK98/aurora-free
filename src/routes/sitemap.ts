@@ -67,13 +67,6 @@ const sitemap: MenuItem[] = [
         icon: 'material-symbols:warning-outline-rounded',
         path: paths[404],
       },
-    ],
-  },
-  {
-    id: 'authentication',
-    subheader: 'Authentication',
-    icon: 'material-symbols:security-rounded',
-    items: [
       {
         name: 'Login',
         icon: 'material-symbols:login',

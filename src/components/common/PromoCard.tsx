@@ -4,42 +4,85 @@ import Paper, { PaperProps } from '@mui/material/Paper';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import { storeLink } from 'lib/constants';
+import { cssVarRgba } from 'lib/utils';
+import IconifyIcon from 'components/base/IconifyIcon';
 import Image from 'components/base/Image';
-import image from '/assets/images/illustrations/2.webp';
+import promo from '/assets/images/illustrations/5.webp';
 
-const PromoCard = ({ sx, ...rest }: PaperProps) => {
+const proFeatures = ['Flexible customization', 'More pages', 'More apps', 'Quick support'];
+
+interface PromoCardProps extends PaperProps {
+  showFeatures?: boolean;
+}
+
+const PromoCard = ({ showFeatures = true, sx, ...rest }: PromoCardProps) => {
   return (
     <Paper
-      background={1}
-      sx={{ p: 2, borderRadius: 4, outline: 0, position: 'relative', ...sx }}
+      sx={(theme) => {
+        const palette = (theme.vars.palette as any)['chGreen'];
+        const bg = (theme.vars.palette as any).background;
+        return {
+          background: `
+          radial-gradient(
+            120.77% 120.77% at 62.42% 14.25%,
+            ${cssVarRgba(palette['50Channel'], 0)} 51.22%,
+            ${cssVarRgba(palette['100Channel'], 0.48)} 69.8%
+          ),
+          radial-gradient(
+            125.2% 221.14% at 103.41% -3.28%,
+            ${cssVarRgba(bg.elevation1Channel, 1)} 52.92%,
+            ${cssVarRgba(palette['50Channel'], 0.48)} 67.23%,
+            ${cssVarRgba(palette['100Channel'], 0.48)} 100%
+          ),
+          linear-gradient(
+            309.91deg,
+            ${cssVarRgba(palette['100Channel'], 0.02)} 0.61%,
+            ${cssVarRgba(palette['200Channel'], 0.02)} 39.75%
+          )
+        `,
+          p: 3,
+          borderRadius: 4,
+          outline: 0,
+          position: 'relative',
+          ...(sx as any),
+        };
+      }}
       {...rest}
     >
-      <Stack direction="column" alignItems="center" gap={0.5}>
-        <Typography
-          variant="h6"
-          sx={{
-            fontWeight: 700,
-            fontSize: 18,
-            background: `linear-gradient(92.45deg, #20DE99 -0.35%, #7DB1F5 43.54%, #5A9EF6 78.08%)`,
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
-          }}
-        >
-          More Features?
-        </Typography>
-        <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-          {`From only `}
-          <Box component="strong" sx={{ color: 'text.primary' }}>
-            $59
-          </Box>
-        </Typography>
+      <Stack direction="column" gap={2} alignItems="center">
+        <Stack direction="column" alignItems="center" gap={0.5}>
+          <Typography variant="subtitle1" fontWeight={700} sx={{ color: 'success.dark' }}>
+            Get More Features
+          </Typography>
+          <Stack gap={1} alignItems="center" sx={{ color: 'success.main' }}>
+            <Typography variant="caption" fontWeight={500}>
+              Starting at just
+            </Typography>
+            <Typography component="strong" variant="subtitle2">
+              $59
+            </Typography>
+          </Stack>
+        </Stack>
 
-        <Box component="figure" sx={{ maxWidth: 160, mx: 'auto', my: 0.5 }}>
-          <Image alt="Aurora dashboard" src={image} sx={{ width: 1, height: 1 }} />
+        <Box component="figure" sx={{ m: 0, maxWidth: 136 }}>
+          <Image alt="Aurora dashboard" src={promo} sx={{ width: 1, height: 1 }} />
         </Box>
 
-        <Button href={storeLink} target="_blank" variant="contained" color="neutral">
-          Upgrade to Pro
+        {showFeatures && (
+          <Stack direction="column" gap={0.4} alignSelf="flex-start">
+            {proFeatures.map((feature, index) => (
+              <Stack key={index} gap={0.4} alignItems="center" sx={{ color: 'success.light' }}>
+                <IconifyIcon icon="material-symbols:check" sx={{ fontSize: 16 }} />
+                <Typography variant="caption" fontWeight={600}>
+                  {feature}
+                </Typography>
+              </Stack>
+            ))}
+          </Stack>
+        )}
+
+        <Button href={storeLink} target="_blank" fullWidth variant="contained" color="neutral">
+          Explore now
         </Button>
       </Stack>
     </Paper>
