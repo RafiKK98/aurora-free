@@ -19,8 +19,8 @@ const PromoCard = ({ showFeatures = true, sx, ...rest }: PromoCardProps) => {
     <Box
       className="promo-card"
       sx={(theme) => {
-        const palette = (theme.vars.palette as any)['chGreen'];
-        const bg = (theme.vars.palette as any).background;
+        const palette = theme.vars.palette['chGreen'];
+        const bg = theme.vars.palette.background;
         return {
           background: `
           radial-gradient(

@@ -1,6 +1,13 @@
 import { mainDrawerWidth } from 'lib/constants';
 
-export const fontFamilies = ['Plus Jakarta Sans', 'Roboto', 'Inter', 'Poppins'] as const;
+export const fontFamilies = [
+  'Plus Jakarta Sans',
+  'Roboto',
+  'Inter',
+  'Poppins',
+  'Spline Sans Mono',
+  'Edu SA Hand',
+] as const;
 
 export type FontFamily = (typeof fontFamilies)[number];
 
@@ -17,7 +24,7 @@ export const initialConfig: Config = {
   sidenavCollapsed: false,
   openNavbarDrawer: false,
   drawerWidth: mainDrawerWidth.full,
-  fontFamily: 'Plus Jakarta Sans',
+  fontFamily: fontFamilies[0],
 };
 
 export const defaultAuthCredentials = {
