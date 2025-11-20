@@ -2,19 +2,31 @@ import Box, { BoxProps } from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
+import { SxProps, Theme } from '@mui/material/styles';
 import { storeLink } from 'lib/constants';
 import { cssVarRgba } from 'lib/utils';
 import IconifyIcon from 'components/base/IconifyIcon';
 import Image from 'components/base/Image';
-import promo from '/assets/images/illustrations/5.webp';
 
 const proFeatures = ['Flexible customization', 'More pages', 'More apps', 'Quick support'];
 
 interface PromoCardProps extends BoxProps {
   showFeatures?: boolean;
+  img: string;
+  imgStyles?: SxProps<Theme>;
+  title?: string;
+  subTitle?: string;
 }
 
-const PromoCard = ({ showFeatures = true, sx, ...rest }: PromoCardProps) => {
+const PromoCard = ({
+  showFeatures = true,
+  img,
+  imgStyles,
+  title = 'Get More Features',
+  subTitle = 'Starting at just',
+  sx,
+  ...rest
+}: PromoCardProps) => {
   return (
     <Box
       className="promo-card"
@@ -52,11 +64,11 @@ const PromoCard = ({ showFeatures = true, sx, ...rest }: PromoCardProps) => {
       <Stack direction="column" gap={2} alignItems="center">
         <Stack direction="column" alignItems="center" gap={0.5}>
           <Typography variant="subtitle1" fontWeight={700}>
-            Get More Features
+            {title}
           </Typography>
           <Stack gap={1} alignItems="center">
-            <Typography variant="caption" fontWeight={500}>
-              Starting at just
+            <Typography variant="caption" fontWeight={500} lineHeight={1.3}>
+              {subTitle}
             </Typography>
             <Typography component="strong" variant="subtitle2" fontWeight={700} color="success">
               $59
@@ -64,8 +76,8 @@ const PromoCard = ({ showFeatures = true, sx, ...rest }: PromoCardProps) => {
           </Stack>
         </Stack>
 
-        <Box component="figure" sx={{ m: 0, maxWidth: 136 }}>
-          <Image alt="Aurora dashboard" src={promo} sx={{ width: 1, height: 1 }} />
+        <Box component="figure" sx={{ m: 0, ...imgStyles }}>
+          <Image alt="Aurora dashboard" src={img} sx={{ width: 1, height: 1 }} />
         </Box>
 
         {showFeatures && (
