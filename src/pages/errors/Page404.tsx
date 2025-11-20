@@ -22,12 +22,12 @@ const Page404 = () => {
       >
         <Box
           sx={{
-            mb: 10,
+            mb: 8,
             width: {
               xs: 300,
               sm: 500,
               md: 800,
-              lg: 1046,
+              // lg: 1046,
             },
             height: 'auto',
           }}
