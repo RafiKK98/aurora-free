@@ -12,15 +12,14 @@ const ProPlanCTA = () => {
         justifyContent: 'space-between',
         alignItems: { sm: 'center' },
         flexWrap: { xs: 'wrap', sm: 'nowrap' },
+        height: 1,
       }}
     >
       <Stack
-        rowGap={1}
-        columnGap={2}
+        gap={0.5}
         sx={{
-          flexDirection: { xs: 'column', sm: 'row' },
-          alignItems: { sm: 'center' },
-          flexWrap: { sm: 'wrap' },
+          flexDirection: 'column',
+          alignItems: 'flex-start',
         }}
       >
         <Typography variant="h3" sx={{ typography: { xs: 'h4', sm: 'h3' }, flexShrink: { sm: 0 } }}>
@@ -31,6 +30,7 @@ const ProPlanCTA = () => {
           sx={{
             typography: { xs: 'subtitle2', sm: 'subtitle1' },
             fontWeight: { xs: 400, sm: 400 },
+            color: 'text.secondary',
           }}
         >
           Starts from only $59.
